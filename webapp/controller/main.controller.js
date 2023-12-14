@@ -4,11 +4,12 @@ sap.ui.define([
     'sap/f/library',
     'sap/ui/model/Sorter',
     'sap/ui/core/Fragment',
+    'sap/ui/model/Filter',
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, Device, fioriLibrary, Sorter, Fragment) {
+    function (Controller, Device, fioriLibrary, Sorter, Fragment, Filter) {
         "use strict";
 
         return Controller.extend("ap.be.materiaal.controller.main", {
@@ -60,6 +61,33 @@ sap.ui.define([
 
                 // apply the selected sort and group settings
                 oBinding.sort(aSorters);
+            },
+            handleFilterButtonPressed: function () {
+                this.getViewSettingsDialog("ap.be.materiaal.fragments.filterDialog")
+                    .then(function (oViewSettingsDialog) {
+                        oViewSettingsDialog.open();
+                    });
+            },
+            handleFilterDialogConfirm: function (oEvent) {
+                var oTable = this.byId("materialTable"),
+                    mParams = oEvent.getParameters(),
+                    oBinding = oTable.getBinding("items"),
+                    aFilters = [];
+
+                mParams.filterItems.forEach(function(oItem) {
+                    let sPath = oItem.getParent().getKey(),
+                        sOperator = 'EQ',
+                        sValue1 = oItem.getKey(),
+                        oFilter = new Filter(sPath, sOperator, sValue1);
+                    aFilters.push(oFilter);
+                });
+
+                // apply filter settings
+                oBinding.filter(aFilters);
+
+                // update filter bar
+                // this.byId("vsdFilterBar").setVisible(aFilters.length > 0);
+                // this.byId("vsdFilterLabel").setText(mParams.filterString);
             },
         
         });

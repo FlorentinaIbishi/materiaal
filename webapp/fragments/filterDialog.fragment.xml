@@ -1,0 +1,39 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		confirm="handleFilterDialogConfirm">
+		<filterItems>
+         <ViewSettingsFilterItem
+				text="Description"
+				key="MatDescription"
+				multiSelect="false">
+				<items>
+                <ViewSettingsItem text="Shirt" key="SHRT1625" />
+				<ViewSettingsItem text="Touring bike" key="TRFR3393" />
+				</items>
+			</ViewSettingsFilterItem>
+            <ViewSettingsFilterItem
+				text="Group"
+				key="Matkl"
+				multiSelect="false">
+				<items>
+                <ViewSettingsItem text="Retail" key="1" />
+				<ViewSettingsItem text="Chemical" key="C" />
+                <ViewSettingsItem text="Service" key="S" />
+				</items>
+			</ViewSettingsFilterItem>
+            <ViewSettingsFilterItem
+				text="Type"
+				key="Mtart"
+				multiSelect="false">
+				<items>
+                <ViewSettingsItem text="RAW" key="ROH" />
+				<ViewSettingsItem text="Trading" key="HAWA" />
+				</items>
+			</ViewSettingsFilterItem>
+
+
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>
