@@ -20,7 +20,7 @@
 						tooltip="Filter"
 						icon="sap-icon://filter"
 						press="handleFilterButtonPressed"/>
-
+                    <Button icon="sap-icon://excel-attachment" press="onExport"></Button>
 				</OverflowToolbar>
 			</headerToolbar>
                 <columns>

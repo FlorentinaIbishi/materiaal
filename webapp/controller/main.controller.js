@@ -5,11 +5,13 @@ sap.ui.define([
     'sap/ui/model/Sorter',
     'sap/ui/core/Fragment',
     'sap/ui/model/Filter',
+    'sap/ui/export/Spreadsheet',
+    'sap/ui/export/library'
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, Device, fioriLibrary, Sorter, Fragment, Filter) {
+    function (Controller, Device, fioriLibrary, Sorter, Fragment, Filter, Spreadsheet, exportLibrary) {
         "use strict";
 
         return Controller.extend("ap.be.materiaal.controller.main", {
@@ -89,7 +91,63 @@ sap.ui.define([
                 // this.byId("vsdFilterBar").setVisible(aFilters.length > 0);
                 // this.byId("vsdFilterLabel").setText(mParams.filterString);
             },
-        
+            onExport: function(oEvent) {
+                let aCols, oRowBinding, oSettings, oSheet, oTable;
+
+
+                oTable = this.getView().byId("materialTable")
+                oRowBinding = oTable.getBinding('items')
+                aCols = this.createColumnConfig()
+
+                oSettings = {
+                    workbook: {
+                        columns: aCols,
+                        hierarchyLevel: 'Level'
+                    },
+                    dataSource: oRowBinding,
+                    fileName: 'Table export materiaal.xlsx',
+                    worker: false // We need to disable worker because we are using a MockServer as OData Service
+                };
+
+                oSheet = new Spreadsheet(oSettings);
+                oSheet.build().finally(function() {
+                    oSheet.destroy();
+                });
+            },
+            createColumnConfig: function() {
+                let aCols = []
+                let EdmType = exportLibrary.EdmType
+
+                aCols.push({
+                    label: 'Id',
+                    property: ['Matnr'],
+                    type: EdmType.String,
+                    template: 'Materiaal - {0}'
+                });
+
+                aCols.push({
+                    label: 'Matnr',
+                    type: EdmType.String,
+                    property: 'Matnr',
+                    scale: 0
+                });
+
+                aCols.push({
+                    property: 'MatDescription',
+                    type: EdmType.String
+                });
+
+                aCols.push({
+                    property: 'Matkl',
+                    type: EdmType.String
+                });
+                aCols.push({
+                    property: 'Mtart',
+                    type: EdmType.String
+                });
+
+                return aCols;
+            },
         });
     });
 
