@@ -82,40 +82,11 @@
         }
       ]
     },
-    "routing": {
-      "config": {
-        "routerClass": "sap.m.routing.Router",
-        "viewType": "XML",
-        "async": true,
-        "viewPath": "ap.be.materiaal.view",
-        "controlAggregation": "pages",
-        "controlId": "app",
-        "clearControlAggregation": false
-      },
-      "routes": [
-        {
-          "name": "Routemain",
-          "pattern": ":?query:",
-          "target": [
-            "Targetmain"
-          ]
-        }
-      ],
-      "targets": {
-        "Targetmain": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "main",
-          "viewName": "main"
-        }
-      }
-    },
     "rootView": {
       "viewName": "ap.be.materiaal.view.App",
       "type": "XML",
       "async": true,
-      "id": "App"
+      "id": "fcl"
     }
   }
 }
