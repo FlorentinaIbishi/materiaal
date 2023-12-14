@@ -2,6 +2,71 @@
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
-        <content />
+        <content>
+        <Text text="Test"/>
+            <Table
+                id="materialTable"
+                items="{/MaterialSet}"
+                headerText="Materials"
+            >
+                <columns>
+                    <Column
+                        id="matnrCol"
+                        width="12em"
+                    >
+                        <VBox>
+                            <Text text="Matnr" />
+                        </VBox>
+                    </Column>
+                    <Column
+                        id="descriptionCol"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                        hAlign="End"
+                    >
+                        <Text text="Description" />
+                    </Column>
+                    <Column
+                        id="groupCol"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                        hAlign="End"
+                    >
+                        <Text text="Group" />
+                    </Column>
+                    <Column
+                        id="typeCol"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                        hAlign="End"
+                    >
+                        <Text text="Type" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem
+                        type="Active"
+                        vAlign="Middle"
+                        navigated="{
+						parts: [
+							'settings>/navigatedItem',
+							'MaterialID'
+						],
+						formatter: '.isNavigated'
+					}"
+                        press="onPress"
+                    >
+                        <cells>
+                            <ObjectIdentifier
+                                title="{Matnr}"
+                            />
+                            <Text text="{MatDescription}" />
+                            <Text text="{Matkl}" />
+                            <Text text="{Mtart}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
     </Page>
 </mvc:View>
