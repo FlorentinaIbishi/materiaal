@@ -7,8 +7,22 @@
             <Table
                 id="materialTable"
                 items="{/MaterialSet}"
-                headerText="Materials"
             >
+             <headerToolbar>
+				<OverflowToolbar>
+					<Title text="Materials" level="H2"/>
+					<ToolbarSpacer/>
+					<Button
+						tooltip="Sort"
+						icon="sap-icon://sort"
+						press="handleSortButtonPressed"/>
+					<Button
+						tooltip="Filter"
+						icon="sap-icon://filter"
+						press="handleFilterButtonPressed"/>
+
+				</OverflowToolbar>
+			</headerToolbar>
                 <columns>
                     <Column
                         id="matnrCol"
