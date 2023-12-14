@@ -12,55 +12,60 @@
 		isChildPage="true"
 		upperCaseAnchorBar="false">
         <headerTitle>
-			<ObjectPageDynamicHeaderTitle>
-				<actions>
-				</actions>
-			</ObjectPageDynamicHeaderTitle>
+			<ObjectPageHeader objectTitle="{Matnr}" isObjectTitleAlwaysVisible="false" ></ObjectPageHeader>
 		</headerTitle>
         <headerContent>
 			<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
 				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
-					<m:Label text="Main Category"/>
-				</m:VBox>
-				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
-					<m:Label text="Subcategory"/>
-				</m:VBox>
-				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
-					<m:Label text="Price"/>
+					<m:Label text="type"/>
+                    <m:Text text="{mtart}"/>
 				</m:VBox>
 			</m:FlexBox>
 		</headerContent>
         <sections>
-			<ObjectPageSection title="General Information">
+	
+			<ObjectPageSection title="Details">
 				<subSections>
 					<ObjectPageSubSection>
 						<blocks>
-							<form:SimpleForm
-								maxContainerCols="2"
-								editable="false"
-								layout="ResponsiveGridLayout"
-								labelSpanL="12"
-								labelSpanM="12"
-								emptySpanL="0"
-								emptySpanM="0"
-								columnsL="1"
-								columnsM="1">
-								<form:content>
-									<m:Label text="Product ID"/>
-									<m:Label text="Description"/>
-									<m:Label text="Supplier"/>
-								</form:content>
-							</form:SimpleForm>
-						</blocks>
-					</ObjectPageSubSection>
-				</subSections>
-			</ObjectPageSection>
-
-			<ObjectPageSection title="Suppliers">
-				<subSections>
-					<ObjectPageSubSection>
-						<blocks>
-							<m:Text text="Here comes the sales data table"/>
+							 <m:Table
+                id="materialdetailTable"
+                items="{/MaterialSet}"
+            >
+             <m:headerToolbar>
+				<m:OverflowToolbar>
+					<m:Title text="Detail" level="H2"/>
+					<m:ToolbarSpacer/>
+				</m:OverflowToolbar>
+			</m:headerToolbar>
+                <m:columns>
+        
+                    <m:Column
+                        id="industryCol"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                        hAlign="End"
+                    >
+                        <m:Text text="Industry" />
+                    </m:Column>
+                    <m:Column
+                        id="Cunitol"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                        hAlign="End"
+                    >
+                        <m:Text text="Unit" />
+                    </m:Column>
+                </m:columns>
+                <m:items>
+                    <m:ColumnListItem vAlign="Middle" >
+                        <m:cells>
+                            <m:Text text="{Mbrsh}" />
+                            <m:Text text="{Meins}" />
+                        </m:cells>
+                    </m:ColumnListItem>
+                </m:items>
+            </m:Table>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
