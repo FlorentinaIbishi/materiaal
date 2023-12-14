@@ -14,9 +14,8 @@
                         id="matnrCol"
                         width="12em"
                     >
-                        <VBox>
                             <Text text="Matnr" />
-                        </VBox>
+                    
                     </Column>
                     <Column
                         id="descriptionCol"
@@ -44,7 +43,7 @@
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem type="Navigation" vAlign="Middle" press="onPress">
+                    <ColumnListItem type="Navigation" vAlign="Middle" press=".onListItemPress">
                         <cells>
                             <ObjectIdentifier
                                 title="{Matnr}"

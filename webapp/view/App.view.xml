@@ -3,10 +3,21 @@
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m" xmlns:f="sap.f"
 	height="100%" >
-    <!--<App id="app">-->
-    <f:FlexibleColumnLayout id="fcl" backgroundDesign="Solid">
-    <f:beginColumnPages>
-			<mvc:XMLView id="beginView" viewName="ap.be.materiaal.view.Main"/>
-		</f:beginColumnPages></f:FlexibleColumnLayout>
-    <!--</App>-->
+    <f:FlexibleColumnLayout
+        id="fcl"
+        backgroundDesign="Solid"
+    >
+        <f:beginColumnPages>
+            <mvc:XMLView
+                id="beginView"
+                viewName="ap.be.materiaal.view.main"
+            />
+        </f:beginColumnPages>
+        <f:midColumnPages>
+            <mvc:XMLView
+                id="detailView"
+                viewName="ap.be.materiaal.view.MaterialDetail"
+            />
+        </f:midColumnPages>
+    </f:FlexibleColumnLayout>
 </mvc:View>
