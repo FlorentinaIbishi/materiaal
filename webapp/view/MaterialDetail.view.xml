@@ -17,8 +17,8 @@
         <headerContent>
 			<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
 				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
-					<m:Label text="type"/>
-                    <m:Text text="{mtart}"/>
+					<m:Label text="Type"/>
+                    <m:Text text="{Matnr}"/>
 				</m:VBox>
 			</m:FlexBox>
 		</headerContent>
@@ -30,7 +30,9 @@
 						<blocks>
 							 <m:Table
                 id="materialdetailTable"
-                items="{/MaterialSet}"
+                items="{/MaterialSet}" 
+                growing="true"
+                growingThreshold="1"
             >
              <m:headerToolbar>
 				<m:OverflowToolbar>
